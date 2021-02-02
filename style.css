@@ -4,7 +4,7 @@
 .coin {
   display: flex;
   border-radius: 50%;
-  background-color: grey;
+  /* background-color: grey; */
   justify-content: center;
   align-items: center;
   border: 2px solid black;
@@ -13,21 +13,25 @@
 .penny {
   width: 50px;
   height: 50px;
+  background-color: #b87333;
 }
 
 .nickel {
   width: 75px;
   height: 75px;
+  background-color: #a0a0a0;
 }
 
 .dime {
   width: 45px;
   height: 45px;
+  background-color: #c0c0c0;
 }
 
 .quarter {
   width: 100px;
   height: 100px;
+  background-color: #808080;
 }
 
 /* .lightbulb-container {

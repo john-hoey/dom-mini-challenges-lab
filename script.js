@@ -29,19 +29,51 @@ gummies.addEventListener("click", () => {
 // //listen for the submission of the form (eventLister)
 // //derive the two values from the inputs
 // //use the input values to create the number of coins and the respective type.
+// Number.prototype.round = function(places) {
+//   return +(Math.round(this + "e+" + places)  + "e-" + places);
+// }
+const roundToTwo = (number) => {
+  return +(Math.round(number + "e+2") + "e-2");
+};
 
 let coinDisplay = document.querySelector(".coin-display");
+let coinTotal = 0;
+let coinTotalParagraph = document.querySelector(".coin-total");
 let form = document.querySelector(".money-form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let formData = new FormData(form);
   let quantity = formData.get("quantity");
   let coinType = formData.get("type");
+  let coinPenny = 0.01;
+  let coinNickel = 0.05;
+  let coinDime = 0.1;
+  let coinQuarter = 0.25;
+
   for (let i = 0; i < quantity; i++) {
     let coin = document.createElement("div");
+
     coin.classList.add(coinType, "coin");
     coin.textContent = coinType;
     coinDisplay.append(coin);
+    if (coinType === "penny") {
+      coinTotal += coinPenny;
+      coinTotal = roundToTwo(coinTotal);
+      coinTotalParagraph.textContent = `Total: $${coinTotal}`;
+    } else if (coinType === "nickel") {
+      coinTotal += coinNickel;
+      coinTotal = roundToTwo(coinTotal);
+      coinTotalParagraph.textContent = `Total: $${coinTotal}`;
+    } else if (coinType === "dime") {
+      coinTotal += coinDime;
+      coinTotal = roundToTwo(coinTotal);
+      coinTotalParagraph.textContent = `Total: $${coinTotal}`;
+    } else if (coinType === "quarter") {
+      coinTotal += coinQuarter;
+      coinTotal = roundToTwo(coinTotal);
+      coinTotalParagraph.textContent = `Total: $${coinTotal}`;
+    }
+
     coin.addEventListener("click", () => {
       coin.remove();
     });
